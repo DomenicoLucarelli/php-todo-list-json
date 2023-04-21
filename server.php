@@ -22,6 +22,30 @@ if(isset($_POST['newEl'])){
     // lo salvo nel file json
     file_put_contents('todos.json', $newObjectJson);
 
+}elseif(isset($_POST['text']) && isset($_POST['index']) && isset($_POST['state'])){
+    
+    $objectJson = file_get_contents('todos.json');
+
+    $objectPhp = json_decode($objectJson);
+
+    if($_POST['state'] == 'false'){
+        $newObject = [
+            "text" => $_POST['text'],
+            "isClick" => true
+        ];
+    }else{
+        $newObject = [
+            "text" => $_POST['text'],
+            "isClick" => false
+        ];
+    };
+    
+    $objectPhp[$_POST['index']] = $newObject;
+
+    $newObjectJson = json_encode($objectPhp);
+  
+    file_put_contents('todos.json', $newObjectJson);
+    
 }elseif(isset($_POST['index'])){
 
     $objectJson = file_get_contents('todos.json');

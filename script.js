@@ -45,9 +45,9 @@ const { createApp } = Vue
         // funzione che barra l'elemento
         strike(todo , indice){
             let data = {
-                newEl : todo.text,
-                elIndex : indice ,
-                boolean : todo.isClick
+                text : todo.text,
+                index : indice ,
+                state : todo.isClick
 
             }
 
